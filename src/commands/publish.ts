@@ -1,8 +1,6 @@
 import { CliUx, Command } from "@oclif/core";
-import { exec } from "child_process";
 import * as fs from "fs";
 import * as archiver from "archiver";
-import * as path from 'path';
 export default class Publish extends Command {
   static description = "Publish dist/ folder";
 
@@ -14,11 +12,10 @@ export default class Publish extends Command {
 
   async run(): Promise<void> {
     const fileName = process.cwd().split('/')[process.cwd().split('/').length - 1];
-    const output = fs.createWriteStream(process.cwd() + `/${fileName}.zip`);
-
     const dir = await CliUx.ux.prompt(`Publish current directory? "/${fileName}" (yes:no)`);
-
+    
     if (dir === 'yes') {
+      const output = fs.createWriteStream(process.cwd() + `/project.zip`);
       const arch = archiver("zip");
 
       output.on("close", () => {
