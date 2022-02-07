@@ -4,10 +4,8 @@ oclif-hello-world
 oclif example Hello World CLI
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![Version](https://img.shields.io/npm/v/oclif-hello-world.svg)](https://npmjs.org/package/oclif-hello-world)
-[![CircleCI](https://circleci.com/gh/oclif/hello-world/tree/main.svg?style=shield)](https://circleci.com/gh/oclif/hello-world/tree/main)
-[![Downloads/week](https://img.shields.io/npm/dw/oclif-hello-world.svg)](https://npmjs.org/package/oclif-hello-world)
-[![License](https://img.shields.io/npm/l/oclif-hello-world.svg)](https://github.com/oclif/hello-world/blob/main/package.json)
+[![Version](https://img.shields.io/npm/v/rrochacli.svg)](https://npmjs.org/package/rrochacli)
+[![Downloads/week](https://img.shields.io/npm/dw/rrochacli.svg)](https://npmjs.org/package/rrochacli)
 
 <!-- toc -->
 * [Usage](#usage)
@@ -29,8 +27,6 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`rrochacli hello PERSON`](#rrochacli-hello-person)
-* [`rrochacli hello world`](#rrochacli-hello-world)
 * [`rrochacli help [COMMAND]`](#rrochacli-help-command)
 * [`rrochacli plugins`](#rrochacli-plugins)
 * [`rrochacli plugins:inspect PLUGIN...`](#rrochacli-pluginsinspect-plugin)
@@ -38,47 +34,7 @@ USAGE
 * [`rrochacli plugins:link PLUGIN`](#rrochacli-pluginslink-plugin)
 * [`rrochacli plugins:uninstall PLUGIN...`](#rrochacli-pluginsuninstall-plugin)
 * [`rrochacli plugins update`](#rrochacli-plugins-update)
-* [`rrochacli publish publish`](#rrochacli-publish-publish)
-
-## `rrochacli hello PERSON`
-
-Say hello
-
-```
-USAGE
-  $ rrochacli hello [PERSON] -f <value>
-
-ARGUMENTS
-  PERSON  Person to say hello to
-
-FLAGS
-  -f, --from=<value>  (required) Whom is saying hello
-
-DESCRIPTION
-  Say hello
-
-EXAMPLES
-  $ oex hello friend --from oclif
-  hello friend from oclif! (./src/commands/hello/index.ts)
-```
-
-_See code: [dist/commands/hello/index.ts](https://github.com/ricdotnet/rrochacli/blob/v0.0.2/dist/commands/hello/index.ts)_
-
-## `rrochacli hello world`
-
-Say hello world
-
-```
-USAGE
-  $ rrochacli hello world
-
-DESCRIPTION
-  Say hello world
-
-EXAMPLES
-  $ oex hello world
-  hello world! (./src/commands/hello/world.ts)
-```
+* [`rrochacli publish`](#rrochacli-publish)
 
 ## `rrochacli help [COMMAND]`
 
@@ -246,13 +202,13 @@ DESCRIPTION
   Update installed plugins.
 ```
 
-## `rrochacli publish publish`
+## `rrochacli publish`
 
 Publish dist/ folder
 
 ```
 USAGE
-  $ rrochacli publish publish
+  $ rrochacli publish
 
 DESCRIPTION
   Publish dist/ folder
@@ -260,4 +216,6 @@ DESCRIPTION
 EXAMPLES
   $ rrochacli publish
 ```
+
+_See code: [dist/commands/publish.ts](https://github.com/ricdotnet/rrochacli/blob/v0.0.2/dist/commands/publish.ts)_
 <!-- commandsstop -->
