@@ -1,4 +1,4 @@
-import { Command } from "@oclif/core";
+import { CliUx, Command } from "@oclif/core";
 import { exec } from "child_process";
 import * as fs from "fs";
 import * as archiver from "archiver";
@@ -13,18 +13,24 @@ export default class Publish extends Command {
   static args = [];
 
   async run(): Promise<void> {
-    console.log(__dirname);
-    const output = fs.createWriteStream(process.cwd() + "/res/test.zip");
+    const fileName = process.cwd().split('/')[process.cwd().split('/').length - 1];
+    const output = fs.createWriteStream(process.cwd() + `${fileName}.zip`);
 
-    const arch = archiver("zip");
+    const dir = await CliUx.ux.prompt(`Publish current directory? ${process.cwd()}`);
 
-    output.on("close", () => {
-      console.log(arch.pointer());
-      console.log("done...");
-    });
+    if (dir === '') {
+      const arch = archiver("zip");
 
-    arch.pipe(output);
-    arch.append("hello.txt", { name: "hello.txt" });
-    arch.finalize();
+      output.on("close", () => {
+        console.log(arch.pointer());
+        console.log("done...");
+      });
+
+      arch.pipe(output);
+      arch.directory(process.cwd(), false);
+      arch.finalize();
+    } else {
+      this.error('Invalid directory!');
+    }
   }
 }
