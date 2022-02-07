@@ -16,9 +16,9 @@ export default class Publish extends Command {
     const fileName = process.cwd().split('/')[process.cwd().split('/').length - 1];
     const output = fs.createWriteStream(process.cwd() + `${fileName}.zip`);
 
-    const dir = await CliUx.ux.prompt(`Publish current directory? ${process.cwd()}`);
+    const dir = await CliUx.ux.prompt(`Publish current directory? "/${fileName}" (yes:no)`);
 
-    if (dir === '') {
+    if (dir === 'yes') {
       const arch = archiver("zip");
 
       output.on("close", () => {
