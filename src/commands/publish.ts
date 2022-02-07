@@ -2,6 +2,7 @@ import { Command } from "@oclif/core";
 import { exec } from "child_process";
 import * as fs from "fs";
 import * as archiver from "archiver";
+import * as path from 'path';
 export default class Publish extends Command {
   static description = "Publish dist/ folder";
 
@@ -13,7 +14,7 @@ export default class Publish extends Command {
 
   async run(): Promise<void> {
     console.log(__dirname);
-    const output = fs.createWriteStream(__dirname + "/res/test.zip");
+    const output = fs.createWriteStream(process.cwd() + "/res/test.zip");
 
     const arch = archiver("zip");
 
