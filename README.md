@@ -20,7 +20,7 @@ $ npm install -g rrochacli
 $ rrochacli COMMAND
 running command...
 $ rrochacli (--version)
-rrochacli/0.0.1 darwin-x64 node-v16.13.0
+rrochacli/0.0.2 darwin-x64 node-v16.13.0
 $ rrochacli --help [COMMAND]
 USAGE
   $ rrochacli COMMAND
@@ -62,7 +62,7 @@ EXAMPLES
   hello friend from oclif! (./src/commands/hello/index.ts)
 ```
 
-_See code: [dist/commands/hello/index.ts](https://github.com/ricdotnet/rrochacli/blob/v0.0.1/dist/commands/hello/index.ts)_
+_See code: [dist/commands/hello/index.ts](https://github.com/ricdotnet/rrochacli/blob/v0.0.2/dist/commands/hello/index.ts)_
 
 ## `rrochacli hello world`
 
