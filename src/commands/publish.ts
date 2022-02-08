@@ -13,9 +13,10 @@ export default class Publish extends Command {
   async run(): Promise<void> {
     const fileName = process.cwd().split('/')[process.cwd().split('/').length - 1];
     const dir = await CliUx.ux.prompt(`Publish current directory? "/${fileName}" (yes:no)`);
-    
+    const name = await CliUx.ux.prompt('Enter a name for your app:');
+
     if (dir === 'yes') {
-      const output = fs.createWriteStream(process.cwd() + `/project.zip`);
+      const output = fs.createWriteStream(process.cwd() + `/${name}.zip`);
       const arch = archiver("zip");
 
       output.on("close", () => {
