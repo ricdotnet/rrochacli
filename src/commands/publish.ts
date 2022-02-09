@@ -5,6 +5,7 @@ import * as archiver from "archiver";
 import axios from "axios";
 import * as FormData from 'form-data';
 
+import * as path from 'path';
 import * as dotenv from 'dotenv';
 dotenv.config();
 
@@ -28,12 +29,12 @@ export default class Publish extends Command {
     // form.append('folder-name', )
 
     if (dir === 'yes') {
-      const output = fs.createWriteStream(process.cwd() + `/${name}.zip`);
-      const arch = archiver("zip");
+      const output = fs.createWriteStream(path.join(process.cwd(), `${name}.zip`));
+      const arch = archiver('zip');
 
-      output.on("close", () => {
+      output.on('close', () => {
         console.log(arch.pointer());
-        console.log("done...");
+        console.log('done...');
       });
 
       arch.pipe(output);
@@ -43,22 +44,20 @@ export default class Publish extends Command {
       // fs.readFile(`${process.cwd()}/${fileName}`, (error, data) => {
       //   form.append('project', data);
       // });
-      const data = await fsp.readFile(process.cwd() + `/${name}.zip`);
+      const data = await fsp.readFile(path.join(process.cwd(), `${name}.zip`));
       form.append('project', data);
 
-      console.log(form);
-
-      // axios.post('https://cli.ricr.net/send', {
-      //   form,
-      // }, {
-      //   headers: {
-      //     'api-key': apiKey,
-      //   }
-      // }).then((r) => {
-      //   console.log(r.data.m);
-      // }).catch((e) => {
-      //   console.log(e);
-      // });
+      axios.post('https://cli.ricr.net/send', {
+        form,
+      }, {
+        headers: {
+          'api-key': apiKey,
+        }
+      }).then((r) => {
+        console.log(r.data.m);
+      }).catch((e) => {
+        console.log(e);
+      });
 
     } else {
       this.error('Invalid directory!');
