@@ -18,7 +18,7 @@ $ npm install -g rrochacli
 $ rrochacli COMMAND
 running command...
 $ rrochacli (--version)
-rrochacli/0.2.0 darwin-x64 node-v16.13.0
+rrochacli/0.2.1 darwin-x64 node-v16.13.0
 $ rrochacli --help [COMMAND]
 USAGE
   $ rrochacli COMMAND
@@ -34,7 +34,6 @@ USAGE
 * [`rrochacli plugins:link PLUGIN`](#rrochacli-pluginslink-plugin)
 * [`rrochacli plugins:uninstall PLUGIN...`](#rrochacli-pluginsuninstall-plugin)
 * [`rrochacli plugins update`](#rrochacli-plugins-update)
-* [`rrochacli publish`](#rrochacli-publish)
 
 ## `rrochacli help [COMMAND]`
 
@@ -201,21 +200,4 @@ FLAGS
 DESCRIPTION
   Update installed plugins.
 ```
-
-## `rrochacli publish`
-
-Publish dist/ folder
-
-```
-USAGE
-  $ rrochacli publish
-
-DESCRIPTION
-  Publish dist/ folder
-
-EXAMPLES
-  $ rrochacli publish
-```
-
-_See code: [dist/commands/publish.ts](https://github.com/ricdotnet/rrochacli/blob/v0.2.0/dist/commands/publish.ts)_
 <!-- commandsstop -->
