@@ -34,6 +34,7 @@ USAGE
 * [`rrochacli plugins:link PLUGIN`](#rrochacli-pluginslink-plugin)
 * [`rrochacli plugins:uninstall PLUGIN...`](#rrochacli-pluginsuninstall-plugin)
 * [`rrochacli plugins update`](#rrochacli-plugins-update)
+* [`rrochacli publish`](#rrochacli-publish)
 
 ## `rrochacli help [COMMAND]`
 
@@ -200,4 +201,21 @@ FLAGS
 DESCRIPTION
   Update installed plugins.
 ```
+
+## `rrochacli publish`
+
+Publish dist/ folder
+
+```
+USAGE
+  $ rrochacli publish
+
+DESCRIPTION
+  Publish dist/ folder
+
+EXAMPLES
+  $ rrochacli publish
+```
+
+_See code: [dist/commands/publish.ts](https://github.com/ricdotnet/rrochacli/blob/v0.2.1/dist/commands/publish.ts)_
 <!-- commandsstop -->

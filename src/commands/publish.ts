@@ -69,7 +69,7 @@ export default class Publish extends Command {
         maxBodyLength: Infinity
       }).then(async (r) => {
         console.log(r.data.m);
-        await exec(`rm -r /tmp/${name}`);
+        await exec(`rm -r /tmp/${name}.zip`);
       }).catch((e) => {
         console.log(e.message);
       });
