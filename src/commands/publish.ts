@@ -41,7 +41,7 @@ export default class Publish extends Command {
       // fs.readFile(`${process.cwd()}/${fileName}`, (error, data) => {
       //   form.append('project', data);
       // });
-      const data = await fsp.readFile(`${process.cwd()}/${fileName}`);
+      const data = await fsp.readFile(`${process.cwd()}/${name}.zip`);
       form.append('project', data);
 
       axios.post('https://cli.ricr.net/send', {
