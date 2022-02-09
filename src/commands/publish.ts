@@ -48,13 +48,13 @@ export default class Publish extends Command {
       // const file = await fs.createReadStream(path.join(process.cwd(), `${name}.zip`));
       form.append('project', fs.createReadStream(path.join(process.cwd(), `${name}.zip`)));
 
-      axios.post('https://cli.ricr.net/send', {
-        form,
-      }, {
+      axios.post('https://cli.ricr.net/send', form, {
         headers:  {
           'api-key': apiKey,
-          ...form.getHeaders()
-        }
+          ...form.getHeaders(),
+        },
+        maxContentLength: Infinity,
+        maxBodyLength: Infinity
       }).then((r) => {
         console.log(r.data.m);
       }).catch((e) => {
