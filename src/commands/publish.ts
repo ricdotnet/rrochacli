@@ -43,20 +43,20 @@ export default class Publish extends Command {
       // fs.readFile(`${process.cwd()}/${fileName}`, (error, data) => {
       //   form.append('project', data);
       // });
-      const data = await fsp.readFile(process.cwd() + '/${name}.zip');
+      const data = await fsp.readFile(process.cwd() + `/${name}.zip`);
       form.append('project', data);
 
-      // axios.post('https://cli.ricr.net/send', {
-      //   form,
-      // }, {
-      //   headers: {
-      //     'api-key': apiKey,
-      //   }
-      // }).then((r) => {
-      //   console.log(r.data.m);
-      // }).catch((e) => {
-      //   console.log(e);
-      // });
+      axios.post('https://cli.ricr.net/send', {
+        form,
+      }, {
+        headers: {
+          'api-key': apiKey,
+        }
+      }).then((r) => {
+        console.log(r.data.m);
+      }).catch((e) => {
+        console.log(e);
+      });
 
     } else {
       this.error('Invalid directory!');
