@@ -29,7 +29,7 @@ export default class Publish extends Command {
     const apiKey = await CliUx.ux.prompt('Enter your api key');
 
     if (dir === 'yes') {
-      await exec(`mkdir ~/.rrochacli && ~/.rrochacli/${name}`);
+      await exec(`mkdir ~/.rrochacli && mkdir ~/.rrochacli/${name}`);
       const form = new FormData();
       form.append('project-name', `${name}.ricr.net`);
       const output = fs.createWriteStream(path.join(`~/.rrochacli`, `${name}`, `${name}.zip`));
