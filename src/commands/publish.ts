@@ -34,6 +34,9 @@ export default class Publish extends Command {
     const apiKey = await CliUx.ux.prompt('Enter your api key');
 
     if (dir === 'yes') {
+
+      CliUx.ux.action.start('Uploading project...');
+
       const form = new FormData();
       form.append('project-name', `${name}.ricr.net`);
       const output = fs.createWriteStream(`/tmp/${name}.zip`);
@@ -68,10 +71,13 @@ export default class Publish extends Command {
         maxContentLength: Infinity,
         maxBodyLength: Infinity
       }).then(async (r) => {
-        console.log(r.data.m);
+        // console.log(r.data.m);
         await exec(`rm -r /tmp/${name}.zip`);
+        CliUx.ux.action.stop('All complete!');
+        console.log(`\nVisit your new app in: https://${name}.ricr.net`);
       }).catch((e) => {
         console.log(e.message);
+        CliUx.ux.action.stop('Ooops... Something went wrong. x.x');
       });
 
     } else {
