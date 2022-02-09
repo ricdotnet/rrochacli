@@ -24,7 +24,7 @@ export default class Publish extends Command {
 
   async run(): Promise<void> {
 
-    if (os.arch() !== 'darwin') {
+    if (os.platform() !== 'darwin') {
       return console.log('Currently we only support MacOS :(');
     }
 
