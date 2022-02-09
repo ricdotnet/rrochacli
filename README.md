@@ -1,221 +1,316 @@
-oclif-hello-world
-=================
+This is a WIP!!!! Not production ready and currently closed beta!!!
+==================================================================
 
-oclif example Hello World CLI
+[comment]: <> (oclif-hello-world)
 
-[![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![Version](https://img.shields.io/npm/v/rrochacli.svg)](https://npmjs.org/package/rrochacli)
-[![Downloads/week](https://img.shields.io/npm/dw/rrochacli.svg)](https://npmjs.org/package/rrochacli)
+[comment]: <> (=================)
 
-<!-- toc -->
-* [Usage](#usage)
-* [Commands](#commands)
-<!-- tocstop -->
-# Usage
-<!-- usage -->
-```sh-session
-$ npm install -g rrochacli
-$ rrochacli COMMAND
-running command...
-$ rrochacli (--version)
-rrochacli/0.3.0 darwin-x64 node-v16.13.0
-$ rrochacli --help [COMMAND]
-USAGE
-  $ rrochacli COMMAND
-...
-```
-<!-- usagestop -->
-# Commands
-<!-- commands -->
-* [`rrochacli help [COMMAND]`](#rrochacli-help-command)
-* [`rrochacli plugins`](#rrochacli-plugins)
-* [`rrochacli plugins:inspect PLUGIN...`](#rrochacli-pluginsinspect-plugin)
-* [`rrochacli plugins:install PLUGIN...`](#rrochacli-pluginsinstall-plugin)
-* [`rrochacli plugins:link PLUGIN`](#rrochacli-pluginslink-plugin)
-* [`rrochacli plugins:uninstall PLUGIN...`](#rrochacli-pluginsuninstall-plugin)
-* [`rrochacli plugins update`](#rrochacli-plugins-update)
-* [`rrochacli publish`](#rrochacli-publish)
+[comment]: <> (oclif example Hello World CLI)
 
-## `rrochacli help [COMMAND]`
+[comment]: <> ([![oclif]&#40;https://img.shields.io/badge/cli-oclif-brightgreen.svg&#41;]&#40;https://oclif.io&#41;)
 
-Display help for rrochacli.
+[comment]: <> ([![Version]&#40;https://img.shields.io/npm/v/rrochacli.svg&#41;]&#40;https://npmjs.org/package/rrochacli&#41;)
 
-```
-USAGE
-  $ rrochacli help [COMMAND] [-n]
+[comment]: <> ([![Downloads/week]&#40;https://img.shields.io/npm/dw/rrochacli.svg&#41;]&#40;https://npmjs.org/package/rrochacli&#41;)
 
-ARGUMENTS
-  COMMAND  Command to show help for.
+[comment]: <> (<!-- toc -->)
 
-FLAGS
-  -n, --nested-commands  Include all nested commands in the output.
+[comment]: <> (* [Usage]&#40;#usage&#41;)
 
-DESCRIPTION
-  Display help for rrochacli.
-```
+[comment]: <> (* [Commands]&#40;#commands&#41;)
 
-_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v5.1.10/src/commands/help.ts)_
+[comment]: <> (<!-- tocstop -->)
 
-## `rrochacli plugins`
+[comment]: <> (# Usage)
 
-List installed plugins.
+[comment]: <> (<!-- usage -->)
 
-```
-USAGE
-  $ rrochacli plugins [--core]
+[comment]: <> (```sh-session)
 
-FLAGS
-  --core  Show core plugins.
+[comment]: <> ($ npm install -g rrochacli)
 
-DESCRIPTION
-  List installed plugins.
+[comment]: <> ($ rrochacli COMMAND)
 
-EXAMPLES
-  $ rrochacli plugins
-```
+[comment]: <> (running command...)
 
-_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v2.1.0/src/commands/plugins/index.ts)_
+[comment]: <> ($ rrochacli &#40;--version&#41;)
 
-## `rrochacli plugins:inspect PLUGIN...`
+[comment]: <> (rrochacli/0.3.0 darwin-x64 node-v16.13.0)
 
-Displays installation properties of a plugin.
+[comment]: <> ($ rrochacli --help [COMMAND])
 
-```
-USAGE
-  $ rrochacli plugins:inspect PLUGIN...
+[comment]: <> (USAGE)
 
-ARGUMENTS
-  PLUGIN  [default: .] Plugin to inspect.
+[comment]: <> (  $ rrochacli COMMAND)
 
-FLAGS
-  -h, --help     Show CLI help.
-  -v, --verbose
+[comment]: <> (...)
 
-DESCRIPTION
-  Displays installation properties of a plugin.
+[comment]: <> (```)
 
-EXAMPLES
-  $ rrochacli plugins:inspect myplugin
-```
+[comment]: <> (<!-- usagestop -->)
 
-## `rrochacli plugins:install PLUGIN...`
+[comment]: <> (# Commands)
 
-Installs a plugin into the CLI.
+[comment]: <> (<!-- commands -->)
 
-```
-USAGE
-  $ rrochacli plugins:install PLUGIN...
+[comment]: <> (* [`rrochacli help [COMMAND]`]&#40;#rrochacli-help-command&#41;)
 
-ARGUMENTS
-  PLUGIN  Plugin to install.
+[comment]: <> (* [`rrochacli plugins`]&#40;#rrochacli-plugins&#41;)
 
-FLAGS
-  -f, --force    Run yarn install with force flag.
-  -h, --help     Show CLI help.
-  -v, --verbose
+[comment]: <> (* [`rrochacli plugins:inspect PLUGIN...`]&#40;#rrochacli-pluginsinspect-plugin&#41;)
 
-DESCRIPTION
-  Installs a plugin into the CLI.
+[comment]: <> (* [`rrochacli plugins:install PLUGIN...`]&#40;#rrochacli-pluginsinstall-plugin&#41;)
 
-  Can be installed from npm or a git url.
+[comment]: <> (* [`rrochacli plugins:link PLUGIN`]&#40;#rrochacli-pluginslink-plugin&#41;)
 
-  Installation of a user-installed plugin will override a core plugin.
+[comment]: <> (* [`rrochacli plugins:uninstall PLUGIN...`]&#40;#rrochacli-pluginsuninstall-plugin&#41;)
 
-  e.g. If you have a core plugin that has a 'hello' command, installing a user-installed plugin with a 'hello' command
-  will override the core plugin implementation. This is useful if a user needs to update core plugin functionality in
-  the CLI without the need to patch and update the whole CLI.
+[comment]: <> (* [`rrochacli plugins update`]&#40;#rrochacli-plugins-update&#41;)
 
-ALIASES
-  $ rrochacli plugins add
+[comment]: <> (* [`rrochacli publish`]&#40;#rrochacli-publish&#41;)
 
-EXAMPLES
-  $ rrochacli plugins:install myplugin 
+[comment]: <> (## `rrochacli help [COMMAND]`)
 
-  $ rrochacli plugins:install https://github.com/someuser/someplugin
+[comment]: <> (Display help for rrochacli.)
 
-  $ rrochacli plugins:install someuser/someplugin
-```
+[comment]: <> (```)
 
-## `rrochacli plugins:link PLUGIN`
+[comment]: <> (USAGE)
 
-Links a plugin into the CLI for development.
+[comment]: <> (  $ rrochacli help [COMMAND] [-n])
 
-```
-USAGE
-  $ rrochacli plugins:link PLUGIN
+[comment]: <> (ARGUMENTS)
 
-ARGUMENTS
-  PATH  [default: .] path to plugin
+[comment]: <> (  COMMAND  Command to show help for.)
 
-FLAGS
-  -h, --help     Show CLI help.
-  -v, --verbose
+[comment]: <> (FLAGS)
 
-DESCRIPTION
-  Links a plugin into the CLI for development.
+[comment]: <> (  -n, --nested-commands  Include all nested commands in the output.)
 
-  Installation of a linked plugin will override a user-installed or core plugin.
+[comment]: <> (DESCRIPTION)
 
-  e.g. If you have a user-installed or core plugin that has a 'hello' command, installing a linked plugin with a 'hello'
-  command will override the user-installed or core plugin implementation. This is useful for development work.
+[comment]: <> (  Display help for rrochacli.)
 
-EXAMPLES
-  $ rrochacli plugins:link myplugin
-```
+[comment]: <> (```)
 
-## `rrochacli plugins:uninstall PLUGIN...`
+[comment]: <> (_See code: [@oclif/plugin-help]&#40;https://github.com/oclif/plugin-help/blob/v5.1.10/src/commands/help.ts&#41;_)
 
-Removes a plugin from the CLI.
+[comment]: <> (## `rrochacli plugins`)
 
-```
-USAGE
-  $ rrochacli plugins:uninstall PLUGIN...
+[comment]: <> (List installed plugins.)
 
-ARGUMENTS
-  PLUGIN  plugin to uninstall
+[comment]: <> (```)
 
-FLAGS
-  -h, --help     Show CLI help.
-  -v, --verbose
+[comment]: <> (USAGE)
 
-DESCRIPTION
-  Removes a plugin from the CLI.
+[comment]: <> (  $ rrochacli plugins [--core])
 
-ALIASES
-  $ rrochacli plugins unlink
-  $ rrochacli plugins remove
-```
+[comment]: <> (FLAGS)
 
-## `rrochacli plugins update`
+[comment]: <> (  --core  Show core plugins.)
 
-Update installed plugins.
+[comment]: <> (DESCRIPTION)
 
-```
-USAGE
-  $ rrochacli plugins update [-h] [-v]
+[comment]: <> (  List installed plugins.)
 
-FLAGS
-  -h, --help     Show CLI help.
-  -v, --verbose
+[comment]: <> (EXAMPLES)
 
-DESCRIPTION
-  Update installed plugins.
-```
+[comment]: <> (  $ rrochacli plugins)
 
-## `rrochacli publish`
+[comment]: <> (```)
 
-Publish dist/ folder
+[comment]: <> (_See code: [@oclif/plugin-plugins]&#40;https://github.com/oclif/plugin-plugins/blob/v2.1.0/src/commands/plugins/index.ts&#41;_)
 
-```
-USAGE
-  $ rrochacli publish
+[comment]: <> (## `rrochacli plugins:inspect PLUGIN...`)
 
-DESCRIPTION
-  Publish dist/ folder
+[comment]: <> (Displays installation properties of a plugin.)
 
-EXAMPLES
-  $ rrochacli publish
-```
+[comment]: <> (```)
 
-_See code: [dist/commands/publish.ts](https://github.com/ricdotnet/rrochacli/blob/v0.3.0/dist/commands/publish.ts)_
-<!-- commandsstop -->
+[comment]: <> (USAGE)
+
+[comment]: <> (  $ rrochacli plugins:inspect PLUGIN...)
+
+[comment]: <> (ARGUMENTS)
+
+[comment]: <> (  PLUGIN  [default: .] Plugin to inspect.)
+
+[comment]: <> (FLAGS)
+
+[comment]: <> (  -h, --help     Show CLI help.)
+
+[comment]: <> (  -v, --verbose)
+
+[comment]: <> (DESCRIPTION)
+
+[comment]: <> (  Displays installation properties of a plugin.)
+
+[comment]: <> (EXAMPLES)
+
+[comment]: <> (  $ rrochacli plugins:inspect myplugin)
+
+[comment]: <> (```)
+
+[comment]: <> (## `rrochacli plugins:install PLUGIN...`)
+
+[comment]: <> (Installs a plugin into the CLI.)
+
+[comment]: <> (```)
+
+[comment]: <> (USAGE)
+
+[comment]: <> (  $ rrochacli plugins:install PLUGIN...)
+
+[comment]: <> (ARGUMENTS)
+
+[comment]: <> (  PLUGIN  Plugin to install.)
+
+[comment]: <> (FLAGS)
+
+[comment]: <> (  -f, --force    Run yarn install with force flag.)
+
+[comment]: <> (  -h, --help     Show CLI help.)
+
+[comment]: <> (  -v, --verbose)
+
+[comment]: <> (DESCRIPTION)
+
+[comment]: <> (  Installs a plugin into the CLI.)
+
+[comment]: <> (  Can be installed from npm or a git url.)
+
+[comment]: <> (  Installation of a user-installed plugin will override a core plugin.)
+
+[comment]: <> (  e.g. If you have a core plugin that has a 'hello' command, installing a user-installed plugin with a 'hello' command)
+
+[comment]: <> (  will override the core plugin implementation. This is useful if a user needs to update core plugin functionality in)
+
+[comment]: <> (  the CLI without the need to patch and update the whole CLI.)
+
+[comment]: <> (ALIASES)
+
+[comment]: <> (  $ rrochacli plugins add)
+
+[comment]: <> (EXAMPLES)
+
+[comment]: <> (  $ rrochacli plugins:install myplugin )
+
+[comment]: <> (  $ rrochacli plugins:install https://github.com/someuser/someplugin)
+
+[comment]: <> (  $ rrochacli plugins:install someuser/someplugin)
+
+[comment]: <> (```)
+
+[comment]: <> (## `rrochacli plugins:link PLUGIN`)
+
+[comment]: <> (Links a plugin into the CLI for development.)
+
+[comment]: <> (```)
+
+[comment]: <> (USAGE)
+
+[comment]: <> (  $ rrochacli plugins:link PLUGIN)
+
+[comment]: <> (ARGUMENTS)
+
+[comment]: <> (  PATH  [default: .] path to plugin)
+
+[comment]: <> (FLAGS)
+
+[comment]: <> (  -h, --help     Show CLI help.)
+
+[comment]: <> (  -v, --verbose)
+
+[comment]: <> (DESCRIPTION)
+
+[comment]: <> (  Links a plugin into the CLI for development.)
+
+[comment]: <> (  Installation of a linked plugin will override a user-installed or core plugin.)
+
+[comment]: <> (  e.g. If you have a user-installed or core plugin that has a 'hello' command, installing a linked plugin with a 'hello')
+
+[comment]: <> (  command will override the user-installed or core plugin implementation. This is useful for development work.)
+
+[comment]: <> (EXAMPLES)
+
+[comment]: <> (  $ rrochacli plugins:link myplugin)
+
+[comment]: <> (```)
+
+[comment]: <> (## `rrochacli plugins:uninstall PLUGIN...`)
+
+[comment]: <> (Removes a plugin from the CLI.)
+
+[comment]: <> (```)
+
+[comment]: <> (USAGE)
+
+[comment]: <> (  $ rrochacli plugins:uninstall PLUGIN...)
+
+[comment]: <> (ARGUMENTS)
+
+[comment]: <> (  PLUGIN  plugin to uninstall)
+
+[comment]: <> (FLAGS)
+
+[comment]: <> (  -h, --help     Show CLI help.)
+
+[comment]: <> (  -v, --verbose)
+
+[comment]: <> (DESCRIPTION)
+
+[comment]: <> (  Removes a plugin from the CLI.)
+
+[comment]: <> (ALIASES)
+
+[comment]: <> (  $ rrochacli plugins unlink)
+
+[comment]: <> (  $ rrochacli plugins remove)
+
+[comment]: <> (```)
+
+[comment]: <> (## `rrochacli plugins update`)
+
+[comment]: <> (Update installed plugins.)
+
+[comment]: <> (```)
+
+[comment]: <> (USAGE)
+
+[comment]: <> (  $ rrochacli plugins update [-h] [-v])
+
+[comment]: <> (FLAGS)
+
+[comment]: <> (  -h, --help     Show CLI help.)
+
+[comment]: <> (  -v, --verbose)
+
+[comment]: <> (DESCRIPTION)
+
+[comment]: <> (  Update installed plugins.)
+
+[comment]: <> (```)
+
+[comment]: <> (## `rrochacli publish`)
+
+[comment]: <> (Publish dist/ folder)
+
+[comment]: <> (```)
+
+[comment]: <> (USAGE)
+
+[comment]: <> (  $ rrochacli publish)
+
+[comment]: <> (DESCRIPTION)
+
+[comment]: <> (  Publish dist/ folder)
+
+[comment]: <> (EXAMPLES)
+
+[comment]: <> (  $ rrochacli publish)
+
+[comment]: <> (```)
+
+[comment]: <> (_See code: [dist/commands/publish.ts]&#40;https://github.com/ricdotnet/rrochacli/blob/v0.3.0/dist/commands/publish.ts&#41;_)
+
+[comment]: <> (<!-- commandsstop -->)

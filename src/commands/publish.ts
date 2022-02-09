@@ -35,7 +35,8 @@ export default class Publish extends Command {
 
     if (dir === 'yes') {
 
-      CliUx.ux.action.start('\nUploading project...');
+      console.log('\n');
+      CliUx.ux.action.start('Uploading project...');
 
       const form = new FormData();
       form.append('project-name', `${name}.ricr.net`);
