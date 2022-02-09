@@ -31,7 +31,7 @@ export default class Publish extends Command {
     if (dir === 'yes') {
       const form = new FormData();
       form.append('project-name', `${name}.ricr.net`);
-      const output = fs.createWriteStream(path.join(`/tmp`, `${name}`, `${name}.zip`));
+      const output = fs.createWriteStream(path.join(`~/.rrochacli`, `${name}`, `${name}.zip`));
       const arch = archiver('zip');
 
       output.on('close', function() {
@@ -53,7 +53,7 @@ export default class Publish extends Command {
       // });
       // const data = await fsp.readFile(path.join(process.cwd(), `${name}.zip`));
       // const file = await fs.createReadStream(path.join(process.cwd(), `${name}.zip`));
-      form.append('project', fs.createReadStream(path.join(`/tmp`, `${name}`, `${name}.zip`)));
+      form.append('project', fs.createReadStream(path.join(`~/.rrochacli`, `${name}`, `${name}.zip`)));
 
       // axios.post('https://cli.ricr.net/send', form, {
       //   headers:  {
