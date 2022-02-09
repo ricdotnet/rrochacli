@@ -18,12 +18,14 @@ export default class Publish extends Command {
   static args = [];
 
   async run(): Promise<void> {
-    const fileName = process.cwd().split('/')[process.cwd().split('/').length - 1];
-    const dir = await CliUx.ux.prompt(`Publish current directory? "/${fileName}" (yes:no)`);
+    const currentFolder = process.cwd().split('/')[process.cwd().split('/').length - 1];
+    const dir = await CliUx.ux.prompt(`Publish current directory? "/${currentFolder}" (yes:no)`);
     const name = await CliUx.ux.prompt('Enter a name for your app');
     const apiKey = await CliUx.ux.prompt('Enter your api key');
 
     const form = new FormData();
+    form.append('project-name', `${name}.ricr.net`);
+    // form.append('folder-name', )
 
     if (dir === 'yes') {
       const output = fs.createWriteStream(process.cwd() + `/${name}.zip`);
@@ -41,20 +43,20 @@ export default class Publish extends Command {
       // fs.readFile(`${process.cwd()}/${fileName}`, (error, data) => {
       //   form.append('project', data);
       // });
-      const data = await fsp.readFile(`${process.cwd()}/${name}.zip`);
+      const data = await fsp.readFile(process.cwd() + '/${name}.zip');
       form.append('project', data);
 
-      axios.post('https://cli.ricr.net/send', {
-        form,
-      }, {
-        headers: {
-          'api-key': apiKey,
-        }
-      }).then((r) => {
-        console.log(r.data.m);
-      }).catch((e) => {
-        console.log(e);
-      });
+      // axios.post('https://cli.ricr.net/send', {
+      //   form,
+      // }, {
+      //   headers: {
+      //     'api-key': apiKey,
+      //   }
+      // }).then((r) => {
+      //   console.log(r.data.m);
+      // }).catch((e) => {
+      //   console.log(e);
+      // });
 
     } else {
       this.error('Invalid directory!');
