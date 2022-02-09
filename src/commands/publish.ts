@@ -12,7 +12,6 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 
 import * as os from 'os';
-import chalk from 'chalk';
 
 export default class Publish extends Command {
   static description = 'Publish dist/ folder';
@@ -26,7 +25,7 @@ export default class Publish extends Command {
   async run(): Promise<void> {
 
     if (os.arch() !== 'darwin') {
-      return console.log(chalk.red('Currently we only support MacOS :('));
+      return console.log('Currently we only support MacOS :(');
     }
 
     const currentFolder = process.cwd().split('/')[process.cwd().split('/').length - 1];
