@@ -47,15 +47,12 @@ export default class Publish extends Command {
       const data = await fsp.readFile(path.join(process.cwd(), `${name}.zip`));
       form.append('project', data);
 
-      const formHeaders = form.getHeaders();
-
       axios.post('https://cli.ricr.net/send', {
         form,
       }, {
-        headers: {
+        headers:  {
           'api-key': apiKey,
-          // @ts-ignore
-          formHeaders,
+          ...form.getHeaders()
         }
       }).then((r) => {
         console.log(r.data.m);
