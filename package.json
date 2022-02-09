@@ -1,6 +1,6 @@
 {
   "name": "rrochacli",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "description": "cli tool to deploy static pages to rrocha.uk",
   "author": "Ricardo Rocha @ricdotnet",
   "bin": {
