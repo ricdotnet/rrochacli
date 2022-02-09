@@ -58,7 +58,7 @@ export default class Publish extends Command {
       }).then((r) => {
         console.log(r.data.m);
       }).catch((e) => {
-        console.log(e);
+        console.log(e.message);
       });
 
     } else {
