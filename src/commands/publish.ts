@@ -31,7 +31,7 @@ export default class Publish extends Command {
     const currentFolder = process.cwd().split('/')[process.cwd().split('/').length - 1];
     const dir = await CliUx.ux.prompt(`Publish current directory? "/${currentFolder}" (yes:no)`);
     const name = await CliUx.ux.prompt('Enter a name for your app');
-    const apiKey = await CliUx.ux.prompt('Enter your api key');
+    const apiKey = await CliUx.ux.prompt('Enter your api key', {type: 'hide'});
 
     if (dir === 'yes') {
 
@@ -43,13 +43,13 @@ export default class Publish extends Command {
       const arch = archiver('zip');
 
       output.on('close', function() {
-        console.log(arch.pointer() + ' total bytes');
-        console.log('archiver has been finalized and the output file descriptor has closed.');
+        // console.log(arch.pointer() + ' total bytes');
+        // console.log('archiver has been finalized and the output file descriptor has closed.');
       });
 
       output.on('close', () => {
-        console.log(arch.pointer());
-        console.log('done...');
+        // console.log(arch.pointer());
+        // console.log('done...');
       });
 
       arch.pipe(output);
