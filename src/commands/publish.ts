@@ -24,13 +24,16 @@ export default class Publish extends Command {
     const name = await CliUx.ux.prompt('Enter a name for your app');
     const apiKey = await CliUx.ux.prompt('Enter your api key');
 
-    const form = new FormData();
-    form.append('project-name', `${name}.ricr.net`);
-    // form.append('folder-name', )
-
     if (dir === 'yes') {
+      const form = new FormData();
+      form.append('project-name', `${name}.ricr.net`);
       const output = fs.createWriteStream(path.join(process.cwd(), `${name}.zip`));
       const arch = archiver('zip');
+
+      output.on('close', function() {
+        console.log(arch.pointer() + ' total bytes');
+        console.log('archiver has been finalized and the output file descriptor has closed.');
+      });
 
       output.on('close', () => {
         console.log(arch.pointer());
@@ -48,18 +51,18 @@ export default class Publish extends Command {
       // const file = await fs.createReadStream(path.join(process.cwd(), `${name}.zip`));
       form.append('project', fs.createReadStream(path.join(process.cwd(), `${name}.zip`)));
 
-      axios.post('https://cli.ricr.net/send', form, {
-        headers:  {
-          'api-key': apiKey,
-          ...form.getHeaders(),
-        },
-        maxContentLength: Infinity,
-        maxBodyLength: Infinity
-      }).then((r) => {
-        console.log(r.data.m);
-      }).catch((e) => {
-        console.log(e.message);
-      });
+      // axios.post('https://cli.ricr.net/send', form, {
+      //   headers:  {
+      //     'api-key': apiKey,
+      //     ...form.getHeaders(),
+      //   },
+      //   maxContentLength: Infinity,
+      //   maxBodyLength: Infinity
+      // }).then((r) => {
+      //   console.log(r.data.m);
+      // }).catch((e) => {
+      //   console.log(e.message);
+      // });
 
     } else {
       this.error('Invalid directory!');
