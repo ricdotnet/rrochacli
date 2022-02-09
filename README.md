@@ -18,7 +18,7 @@ $ npm install -g rrochacli
 $ rrochacli COMMAND
 running command...
 $ rrochacli (--version)
-rrochacli/0.2.2 darwin-x64 node-v16.13.0
+rrochacli/0.2.3 darwin-x64 node-v16.13.0
 $ rrochacli --help [COMMAND]
 USAGE
   $ rrochacli COMMAND
@@ -217,5 +217,5 @@ EXAMPLES
   $ rrochacli publish
 ```
 
-_See code: [dist/commands/publish.ts](https://github.com/ricdotnet/rrochacli/blob/v0.2.2/dist/commands/publish.ts)_
+_See code: [dist/commands/publish.ts](https://github.com/ricdotnet/rrochacli/blob/v0.2.3/dist/commands/publish.ts)_
 <!-- commandsstop -->
