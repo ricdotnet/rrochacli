@@ -24,9 +24,9 @@ export default class Publish extends Command {
 
   async run(): Promise<void> {
 
-    if (os.platform() !== 'darwin') {
-      return console.log('Currently we only support MacOS :(');
-    }
+    // if (os.platform() !== 'darwin') {
+    //   return console.log('Currently we only support MacOS :(');
+    // }
 
     const currentFolder = process.cwd().split('/')[process.cwd().split('/').length - 1];
     const dir = await CliUx.ux.prompt(`Publish current directory? "/${currentFolder}" (yes:no)`);
@@ -40,7 +40,7 @@ export default class Publish extends Command {
 
       const form = new FormData();
       form.append('project-name', `${name}.ricr.net`);
-      const output = fs.createWriteStream(`/tmp/${name}.zip`);
+      const output = (os.platform() === 'win32') ? fs.createWriteStream(`C:\\${name}.zip`) : fs.createWriteStream(`/tmp/${name}.zip`);
       const arch = archiver('zip');
 
       output.on('close', function() {
@@ -62,7 +62,7 @@ export default class Publish extends Command {
       // });
       // const data = await fsp.readFile(path.join(process.cwd(), `${name}.zip`));
       // const file = await fs.createReadStream(path.join(process.cwd(), `${name}.zip`));
-      form.append('project', fs.createReadStream(`/tmp/${name}.zip`));
+      form.append('project', (os.platform() === 'win32') ? fs.createReadStream(`C:\\${name}.zip`) : fs.createReadStream(`/tmp/${name}.zip`));
 
       axios.post('https://cli.ricr.net/send', form, {
         headers:  {
@@ -73,7 +73,7 @@ export default class Publish extends Command {
         maxBodyLength: Infinity
       }).then(async (r) => {
         // console.log(r.data.m);
-        await exec(`rm -r /tmp/${name}.zip`);
+        (os.platform() === 'win32') ? await exec(`del C:\\${name}.zip`) : await exec(`rm -r /tmp/${name}.zip`);
         CliUx.ux.action.stop('All complete!');
         console.log(`\nVisit your new app in: https://${name}.ricr.net`);
       }).catch((e) => {
