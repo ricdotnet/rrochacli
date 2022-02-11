@@ -75,7 +75,7 @@ export default class Publish extends Command {
         // console.log(r.data.m);
         (os.platform() === 'win32') ? await exec(`del ${os.tmpdir()}\\${name}.zip`) : await exec(`rm -r /tmp/${name}.zip`);
         CliUx.ux.action.stop('All complete!');
-        console.log(`\nVisit your new app in: https://${name}.ricr.net`);
+        console.log(`\nVisit your new app in: http://${name}.ricr.net`);
       }).catch((e) => {
         console.log(e.message);
         CliUx.ux.action.stop('Ooops... Something went wrong. x.x');
