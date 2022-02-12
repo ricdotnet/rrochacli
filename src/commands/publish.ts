@@ -8,13 +8,11 @@ import * as util from 'util';
 import * as cp from 'child_process';
 const exec = util.promisify(cp.exec);
 
-import * as dotenv from 'dotenv';
-dotenv.config();
-
 import * as os from 'os';
+import * as path from 'path';
 
 export default class Publish extends Command {
-  static description = 'Publish dist/ folder';
+  static description = 'Publish a new app.';
 
   static examples = [`$ rrochacli publish`];
 
@@ -23,10 +21,6 @@ export default class Publish extends Command {
   static args = [];
 
   async run(): Promise<void> {
-
-    // if (os.platform() !== 'darwin') {
-    //   return console.log('Currently we only support MacOS :(');
-    // }
 
     const currentFolder = process.cwd().split('/')[process.cwd().split('/').length - 1];
     const dir = await CliUx.ux.prompt(`Publish current directory? "${currentFolder}" (yes:no)`);
@@ -40,7 +34,7 @@ export default class Publish extends Command {
 
       const form = new FormData();
       form.append('project-name', `${name}.ricr.net`);
-      const output = (os.platform() === 'win32') ? fs.createWriteStream(`${os.tmpdir()}\\${name}.zip`) : fs.createWriteStream(`${os.tmpdir()}/${name}.zip`);
+      const output = fs.createWriteStream(path.join(os.tmpdir(), `${name}.zip`));
       const arch = archiver('zip');
 
       output.on('close', function() {
@@ -57,14 +51,7 @@ export default class Publish extends Command {
       arch.directory(process.cwd(), false);
       await arch.finalize();
 
-      // fs.readFile(`${process.cwd()}/${fileName}`, (error, data) => {
-      //   form.append('project', data);
-      // });
-      // const data = await fsp.readFile(path.join(process.cwd(), `${name}.zip`));
-      // const file = await fs.createReadStream(path.join(process.cwd(), `${name}.zip`));
-      form.append('project', (os.platform() === 'win32') 
-        ? fs.createReadStream(`${os.tmpdir()}\\${name}.zip`) 
-        : fs.createReadStream(`${os.tmpdir()}/${name}.zip`));
+      form.append('project', fs.createReadStream(path.join(os.tmpdir(), `${name}.zip`)));
 
       axios.post('https://cli.ricr.net/send', form, {
         headers:  {
@@ -74,17 +61,27 @@ export default class Publish extends Command {
         maxContentLength: Infinity,
         maxBodyLength: Infinity
       }).then(async (r) => {
-        // console.log(r.data.m);
-        (os.platform() === 'win32') ? await exec(`del ${os.tmpdir()}\\${name}.zip`) : await exec(`rm -r ${os.tmpdir()}/${name}.zip`);
+        await removeZip(name);
+
         CliUx.ux.action.stop('All complete!');
         console.log(`\nVisit your new app in: http://${name}.ricr.net`);
-      }).catch((e) => {
-        console.log(e.message);
-        CliUx.ux.action.stop('Ooops... Something went wrong. x.x');
+      }).catch(async (e) => {
+        // if something breaks remove the newly created zip file...
+        await removeZip(name);
+        CliUx.ux.action.stop('\nOoops... Something went wrong. x.x');
       });
 
     } else {
       this.error('Invalid directory!');
     }
   }
+}
+
+async function removeZip(name: string) {
+  if(!fs.readFileSync(path.join(os.tmpdir(), `${name}.zip`))) return;
+
+  // this can be refactored too
+  (os.platform() === 'win32')
+    ? await exec(`del -r ${os.tmpdir()}\\${name}.zip`)
+    : await exec(`rm -r ${os.tmpdir()}/${name}.zip`);
 }
